@@ -13,5 +13,6 @@ module.exports = {
   starterEmail: 'testEmail123@gmail.com',
   sendConnectButtonId: 'send-iwe',
   successToastMessageClass: 'notification-container success toast visible ember-view',
-  errorNotificationMessage: 'notification-container error visible ember-view'
+  errorNotificationMessage: 'notification-container error visible ember-view',
+  timeOut: 12500
 }

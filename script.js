@@ -23,21 +23,21 @@ seleniumDrivers.init({
   driver.findElement(By.className(variables.addByEmailButtonClass)).click();
   driver.findElement(By.className(variables.emailInputClass)).sendKeys(variables.starterEmail);
   driver.findElement(By.id(variables.sendConnectButtonId)).click();
-  driver.wait(until.elementLocated(By.className(variables.successToastMessageClass)), 12500);
+  driver.wait(until.elementLocated(By.className(variables.successToastMessageClass)), variables.timeOut);
   var element = driver.findElement(By.className(variables.successToastMessageClass));
 
   emails.forEach(function(email) {
-    driver.wait(until.elementIsNotVisible(element), 12500);
+    driver.wait(until.elementIsNotVisible(element), variables.timeOut);
     driver.findElement(By.className(variables.emailInputClass)).clear();
     driver.findElement(By.className(variables.emailInputClass)).sendKeys(email);
     driver.findElement(By.id(variables.sendConnectButtonId)).click();
     driver.findElement(webDriver.By.className(variables.errorNotificationMessage)).then(
       function(success){
         console.log(email)
-        driver.wait(until.elementIsNotVisible(driver.findElement(By.className(variables.errorNotificationMessage))),12500);
+        driver.wait(until.elementIsNotVisible(driver.findElement(By.className(variables.errorNotificationMessage))), variables.timeOut);
       },
       function (err) {
-        driver.wait(until.elementLocated(By.className(variables.successToastMessageClass)), 12500);
+        driver.wait(until.elementLocated(By.className(variables.successToastMessageClass)), variables.timeOut);
       }
     );
   })
